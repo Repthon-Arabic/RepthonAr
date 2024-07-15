@@ -12,7 +12,7 @@ from validators.url import url
 class Config(object):
     LOGGER = True
     # don't play that🫵🏻
-    PORT = os.environ.get("PORT", None)
+    PORT = os.environ.get("PORT", "8080")
     # MUST NEEDED VARS
     # set this value with your name
     ALIVE_NAME = os.environ.get("ALIVE_NAME", None)
