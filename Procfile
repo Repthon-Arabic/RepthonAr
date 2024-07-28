@@ -1,1 +1,1 @@
-web: gunicorn app:app --daemon && python3 -m repthon
+web: python app.py & python3 -m repthon
