@@ -6,4 +6,4 @@ RUN apt-get -qq update && apt-get -qq install -y git wget ffmpeg mediainfo \
  && rm -rf /var/lib/apt/lists/*
 RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE 8080
-CMD ["python","app.py" & "python3","-m","repthon"]
+CMD [ "python","app.py" & "python3","-m","repthon" ]
