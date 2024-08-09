@@ -7,7 +7,6 @@
 
 import time
 import asyncio
-from aiohttp import web
 import importlib
 import logging
 import glob
@@ -31,7 +30,6 @@ from repthon import BOTLOG, BOTLOG_CHATID, PM_LOGGER_GROUP_ID
 from ..Config import Config
 from ..core.logger import logging
 from ..core.session import zq_lo
-from ..core.server import web_server
 from ..helpers.utils import install_pip
 from ..helpers.utils.utils import runcmd
 from ..sql_helper.global_collection import (
@@ -139,11 +137,6 @@ async def setup_bot():
         bot_details = await zq_lo.tgbot.get_me()
         Config.TG_BOT_USERNAME = f"@{bot_details.username}"
         # await zq_lo.start(bot_token=Config.TG_BOT_USERNAME)
-        app = web.AppRunner(await web_server())
-        await app.setup()
-        bind_address = "0.0.0.0"
-        baqirport = Config.PORT
-        await web.TCPSite(app, bind_address, baqirport).start()
         zq_lo.me = await zq_lo.get_me()
         zq_lo.uid = zq_lo.tgbot.uid = utils.get_peer_id(zq_lo.me)
         if Config.OWNER_ID == 0:
